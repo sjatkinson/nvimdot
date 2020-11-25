@@ -1,9 +1,13 @@
-set number
+set autoindent
 set hidden
 set ignorecase
+set number
+
+let mapleader=','
 
 syntax on
 syntax enable
+filetype plugin indent on
 
 
 " Show help files in a new tab
@@ -43,3 +47,7 @@ endfunction
 command! PackUpdate call PackInit() | call minpac#update()
 command! PackClean  call PackInit() | call minipac#clean()
 command! PackStatus packadd minipac | call minpac#status()
+
+nmap <C-F> :Files .<CR>
+nmap <leader>e :Files %:p:h<CR>
+
