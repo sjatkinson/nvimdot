@@ -4,6 +4,16 @@ set ignorecase
 set number
 
 let mapleader=','
+set expandtab 
+set softtabstop=4
+set shiftwidth=4
+set autoindent
+set pyxversion=3
+
+let mapleader = ","
+
+exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+autocmd BufNewFile,BufRead *.cpp,*.h,*.py setlocal list
 
 syntax on
 syntax enable
@@ -22,6 +32,9 @@ function! HelpInNewTab()
 	endif
 endfunction
 
+" mappings
+map <C-f> :Files<CR>
+
 
 " Only apply to .txt files
 augroup HelpInTabs
@@ -30,8 +43,13 @@ augroup HelpInTabs
 	autocmd BufEnter *.txt call HelpInNewTab()
 augroup END
 
+if (has("termguicolors"))
+ set termguicolors
+endif
+colorscheme gruvbox
 
-"=== help in tabs end
+
+"=== Packages
 
 function! PackInit()
 	packadd minpac
@@ -41,7 +59,13 @@ function! PackInit()
 	call minpac#add('k-takata/minpac', { 'type' : 'opt' })
 	call minpac#add('junegunn/fzf')
 	call minpac#add('junegunn/fzf.vim')
-
+	call minpac#add('vimwiki/vimwiki')
+	call minpac#add('justinmk/vim-dirvish')
+	call minpac#add('morhetz/gruvbox')
+	call minpac#add('mhartington/oceanic-next')
+	call minpac#add('arcticicestudio/nord-vim')
+	call minpac#add('sickill/vim-monokai')
+	call minpac#add('neoclide/coc.nvim', { 'branch' : 'release'})
 endfunction
 
 command! PackUpdate call PackInit() | call minpac#update()
