@@ -1,6 +1,9 @@
-set number
+set autoindent
 set hidden
 set ignorecase
+set number
+
+let mapleader=','
 set expandtab 
 set softtabstop=4
 set shiftwidth=4
@@ -14,6 +17,7 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.py setlocal list
 
 syntax on
 syntax enable
+filetype plugin indent on
 
 
 " Show help files in a new tab
@@ -52,4 +56,5 @@ source $HOME/.config/nvim/plugins/plugins.vim
 source $HOME/.config/nvim/plugins/minpac.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/floaterm.vim
+
 
