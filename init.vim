@@ -20,6 +20,7 @@ syntax enable
 filetype plugin indent on
 
 
+" TODO: where to put this
 " Show help files in a new tab
 let g:help_in_tabs = 1
 " toggle it on/off
@@ -31,10 +32,6 @@ function! HelpInNewTab()
 		execute "normal \<C-W>T"
 	endif
 endfunction
-
-" mappings
-map <C-f> :Files<CR>
-
 
 " Only apply to .txt files
 augroup HelpInTabs
@@ -49,12 +46,17 @@ endif
 colorscheme gruvbox
 
 
-"=== Load plugins I use
+"=== Add plugins I use
 source $HOME/.config/nvim/plugins/plugins.vim
 
 "=== Load plugin configurations
 source $HOME/.config/nvim/plugins/minpac.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/floaterm.vim
+
+
+"=== mappings
+map <C-f> :Files<CR>
+nmap <c-n> :Startify<cr>
 
 

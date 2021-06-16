@@ -10,4 +10,3 @@ let g:startify_lists = [
       \ { 'header': ['   MRU '. getcwd()], 'type': 'dir' },
       \ ]
 
-nmap <c-n> :Startify<cr>
