@@ -11,6 +11,7 @@ function! PackInit()
 	call minpac#add('voldikss/vim-floaterm')
 	call minpac#add('neoclide/coc.nvim', { 'branch' : 'release'})
 	call minpac#add('mhinz/vim-startify')
+	call minpac#add('tpope/vim-eunuch')
         " Color themes
 	call minpac#add('morhetz/gruvbox')
 	call minpac#add('mhartington/oceanic-next')
