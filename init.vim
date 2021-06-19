@@ -15,9 +15,10 @@ let mapleader = ","
 exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 autocmd BufNewFile,BufRead *.cpp,*.h,*.py setlocal list
 
+
+filetype plugin indent on
 syntax on
 syntax enable
-filetype plugin indent on
 
 
 " TODO: where to put this
@@ -58,5 +59,4 @@ source $HOME/.config/nvim/plugins/floaterm.vim
 "=== mappings
 map <C-f> :Files<CR>
 nmap <c-n> :Startify<cr>
-
 
