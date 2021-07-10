@@ -48,13 +48,32 @@ colorscheme gruvbox
 
 
 "=== Add plugins I use
-source $HOME/.config/nvim/plugins/plugins.vim
+function! PackInit()
+	packadd minpac
+
+	call minpac#init()
+
+	call minpac#add('k-takata/minpac', { 'type' : 'opt' })
+	call minpac#add('junegunn/fzf')
+	call minpac#add('junegunn/fzf.vim')
+	call minpac#add('vimwiki/vimwiki')
+	call minpac#add('justinmk/vim-dirvish')
+	call minpac#add('voldikss/vim-floaterm')
+	call minpac#add('neoclide/coc.nvim', { 'branch' : 'release'})
+	call minpac#add('mhinz/vim-startify')
+	call minpac#add('tpope/vim-eunuch')
+        " Color themes
+	call minpac#add('morhetz/gruvbox')
+	call minpac#add('mhartington/oceanic-next')
+	call minpac#add('arcticicestudio/nord-vim')
+	call minpac#add('sickill/vim-monokai')
+endfunction
 
 "=== Load plugin configurations
-source $HOME/.config/nvim/plugins/minpac.vim
-source $HOME/.config/nvim/plugins/startify.vim
-source $HOME/.config/nvim/plugins/floaterm.vim
-source $HOME/.config/nvim/plugins/vimwiki.vim
+source $HOME/.config/nvim/plugins-config/minpac.vim
+source $HOME/.config/nvim/plugins-config/startify.vim
+source $HOME/.config/nvim/plugins-config/floaterm.vim
+source $HOME/.config/nvim/plugins-config/vimwiki.vim
 
 
 "=== mappings
