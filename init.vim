@@ -54,6 +54,7 @@ source $HOME/.config/nvim/plugins/plugins.vim
 source $HOME/.config/nvim/plugins/minpac.vim
 source $HOME/.config/nvim/plugins/startify.vim
 source $HOME/.config/nvim/plugins/floaterm.vim
+source $HOME/.config/nvim/plugins/vimwiki.vim
 
 
 "=== mappings
