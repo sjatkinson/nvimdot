@@ -1,3 +1,4 @@
+vim.api.nvim_exec([[
 set autoindent
 set hidden
 set ignorecase
@@ -79,4 +80,4 @@ source $HOME/.config/nvim/plugins-config/vimwiki.vim
 "=== mappings
 map <C-f> :Files<CR>
 nmap <c-n> :Startify<cr>
-
+]], false)
