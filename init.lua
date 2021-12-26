@@ -1,3 +1,38 @@
+-- Install packer
+local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+end
+
+vim.cmd [[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost init.lua PackerCompile
+  augroup end
+]]
+local use = require('packer').use
+
+require('packer').startup(function()
+  use 'wbthomason/packer.nvim' -- Package manager
+
+  use 'junegunn/fzf'
+  use 'junegunn/fzf.vim'
+  use 'vimwiki/vimwiki'
+  use 'justinmk/vim-dirvish'
+  use 'voldikss/vim-floaterm'
+  use {
+      'neoclide/coc.nvim', 
+      branch = 'release'}
+  use 'mhinz/vim-startify'
+  use 'tpope/vim-eunuch'
+  -- Color themes
+  use 'morhetz/gruvbox'
+  use 'mhartington/oceanic-next'
+  use 'arcticicestudio/nord-vim'
+  use 'sickill/vim-monokai'
+end)
+
 vim.api.nvim_exec([[
 set autoindent
 set hidden
