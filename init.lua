@@ -33,18 +33,17 @@ require('packer').startup(function()
   use 'sickill/vim-monokai'
 end)
 
-vim.api.nvim_exec([[
-set autoindent
-set hidden
-set ignorecase
-set number
+vim.opt.autoindent = true
+vim.opt.hidden = true
+vim.opt.ignorecase = true
+vim.opt.number = true
+vim.opt.expandtab = true
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.autoindent = true
+vim.opt.pyxversion = 3
 
-let mapleader=','
-set expandtab 
-set softtabstop=4
-set shiftwidth=4
-set autoindent
-set pyxversion=3
+vim.api.nvim_exec([[
 
 let mapleader = ","
 
