@@ -1,3 +1,22 @@
+
+local opts = require('options')
+opts.set_options( { 
+    autoindent = true,
+    expandtab = true,
+    hidden = true,
+    ignorecase = true,
+    number = true ,
+    pyxversion = 3,
+    shiftwidth = 4,
+    softtabstop = 4,
+    termguicolors = true
+})
+
+opts.set_globals({ mapleader = "," })
+opts.set_vim_options({ "colorscheme gruvbox"})
+
+
+-- TODO: put plugin setup in it's own lua. Just pass in array of plugins
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
@@ -33,24 +52,6 @@ require('packer').startup(function()
   use 'sickill/vim-monokai'
 end)
 
-vim.opt.autoindent = true
-vim.opt.hidden = true
-vim.opt.ignorecase = true
-vim.opt.number = true
-vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.autoindent = true
-vim.opt.pyxversion = 3
-vim.opt.termguicolors = true
-
-vim.g.mapleader = ","
-vim.cmd("colorscheme  gruvbox")
-
---vim.cmd('filetype plugin indent on')
---vim.cmd('syntax on')
---vim.cmd('syntax enable')
---
 
 vim.api.nvim_exec([[
 
@@ -92,3 +93,4 @@ source $HOME/.config/nvim/plugins-config/vimwiki.vim
 -- mappings
 vim.api.nvim_set_keymap("n", "<C-f>", ":Files<CR>",{} )
 vim.api.nvim_set_keymap("n", "<C-n>", ":Startify<CR>", {})
+
