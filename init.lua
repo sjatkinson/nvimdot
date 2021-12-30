@@ -60,26 +60,6 @@ exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 autocmd BufNewFile,BufRead *.cpp,*.h,*.py setlocal list
 
 
-" TODO: put this help in tabs in my own plugin
-" Show help files in a new tab
-let g:help_in_tabs = 1
-" toggle it on/off
-nmap <silent> H :let g:help_in_tabs = !g:help_in_tabs<CR>
-
-function! HelpInNewTab()
-	if &buftype == 'help' && g:help_in_tabs
-		" convert the help window to a tab
-		execute "normal \<C-W>T"
-	endif
-endfunction
-
-" Only apply to .txt files
-augroup HelpInTabs
-	autocmd!
-
-	autocmd BufEnter *.txt call HelpInNewTab()
-augroup END
-
 
 
 "=== Load plugin configurations
