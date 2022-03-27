@@ -9,19 +9,40 @@ opts.set_options( {
     pyxversion = 3,
     shiftwidth = 4,
     softtabstop = 4,
-    termguicolors = true
+    termguicolors = true,
+    completeopt=menu,menuone,noselect,
 })
 
 opts.set_globals({ mapleader = "," })
 opts.set_vim_options({ "colorscheme gruvbox"})
 
-require('plugins').init({
+local plugins = require('plugins')
+
+plugins.init()
+
+plugins.use({
          'junegunn/fzf',
          'junegunn/fzf.vim',
          'vimwiki/vimwiki',
          'justinmk/vim-dirvish',
          'voldikss/vim-floaterm',
-         { 'neoclide/coc.nvim', branch = 'release'},
+
+
+	 'neovim/nvim-lspconfig',
+         -- completion
+         'hrsh7th/nvim-cmp',
+         'hrsh7th/cmp-buffer',
+         'hrsh7th/cmp-path',
+         'hrsh7th/cmp-path',
+         'hrsh7th/cmp-nvim-lua',
+         'hrsh7th/cmp-nvim-lsp',
+         'hrsh7th/cmp-cmdline',
+         'saadparwaiz1/cmp-luasnip',
+
+         -- snippets
+         'L3MON4D3/LuaSnip', -- snippet engine
+         'rafamadriz/friendly-snippets',
+
          'mhinz/vim-startify',
          'tpope/vim-eunuch',
          {
@@ -34,6 +55,7 @@ require('plugins').init({
          'arcticicestudio/nord-vim',
          'sickill/vim-monokai'
      })
+plugins.configure("./plugins-config")
 
 vim.api.nvim_exec([[
 
