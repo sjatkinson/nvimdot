@@ -1,15 +1,15 @@
 local Plugins = {}
 
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
--- TODO: what to do the first time when plenary is not installed yet?
-local ft = require "plenary.filetype"
-local Path = require "plenary.path"
 
 function Plugins.configure(cfg_path)
     local cfg = vim.fn.stdpath 'config' .. "/" .. cfg_path
     local uv = vim.loop
 
     local handle = uv.fs_scandir(cfg)
+    -- TODO: what to do the first time when plenary is not installed yet?
+    local ft = require "plenary.filetype"
+    local Path = require "plenary.path"
     if handle ~= nil then
         while true do
             local name = uv.fs_scandir_next(handle)
