@@ -1,6 +1,6 @@
 let g:startify_bookmarks = [
   \ { 'z': '~/.config/zsh/zshrc' },
-  \ { 'v': '~/.config/nvim/init.vim' },
+  \ { 'v': '~/.config/nvim/init.lua' },
   \ { 'r': '~/devel/TpsBridge/'}
   \ ]
 

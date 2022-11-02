@@ -55,7 +55,7 @@ plugins.use({
          'arcticicestudio/nord-vim',
          'sickill/vim-monokai'
      })
-plugins.configure("./plugins-config")
+plugins.configure("./plugin/configs")
 
 vim.api.nvim_exec([[
 
