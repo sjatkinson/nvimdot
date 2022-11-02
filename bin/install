@@ -1,9 +1,0 @@
-#!/bin/sh
-
-set -x
-
-# Install minpac
-
-if [ ! -d ~/.config/nvim/pack/minpac ] ; then
-    ( cd ~/.config/nvim && mkdir -p ~/.config/nvim/pack/minpac/opt && cd pack/minpac/opt &&  git clone https://github.com/k-takata/minpac.git )
-fi
