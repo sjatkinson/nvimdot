@@ -63,9 +63,10 @@ autocmd BufNewFile,BufRead *.cpp,*.h,*.py setlocal list
 
 ]], false)
 
+local keymaps = require('keymaps')
+keymaps.normal( {
+	{ "<C-n>", ":Startify<CR>" },
+        { "<C-f>", ":Files<CR>" },
+})
 
--- TODO - make a mappings lua module
--- mappings
-vim.api.nvim_set_keymap("n", "<C-f>", ":Files<CR>",{} )
-vim.api.nvim_set_keymap("n", "<C-n>", ":Startify<CR>", {})
 
