@@ -51,7 +51,7 @@ require('plugins').use({
          'hrsh7th/cmp-nvim-lua',
          'hrsh7th/cmp-nvim-lsp',
          'hrsh7th/cmp-cmdline',
-         'saadparwaiz1/cmp_luasnip',
+         -- 'saadparwaiz1/cmp_luasnip',
 
          -- snippets
          'L3MON4D3/LuaSnip', -- snippet engine
@@ -71,12 +71,6 @@ require('plugins').use({
          'sickill/vim-monokai'
      })
 
-vim.api.nvim_exec([[
-
-exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-autocmd BufNewFile,BufRead *.cpp,*.h,*.py setlocal list
-
-]], false)
 
 local keymaps = require('keymaps')
 keymaps.normal( {
