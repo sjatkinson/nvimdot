@@ -9,23 +9,37 @@ opts.set_options( {
     pyxversion = 3,
     shiftwidth = 4,
     softtabstop = 4,
+    smartindent = true,
+    swapfile = false,
+    backup = false,
     termguicolors = true,
+    hlsearch = false,
+    incsearch = true,
     completeopt=menu,menuone,noselect,
 })
 
-opts.set_globals({ mapleader = "," })
+opts.set_globals({ mapleader = " " })
 opts.set_vim_options({ "colorscheme gruvbox"})
 
-local plugins = require('plugins')
+vim.opt.listchars = {
+}
 
-plugins.init()
+-- exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
-plugins.use({
+require('plugins').use({
          'junegunn/fzf',
          'junegunn/fzf.vim',
          'vimwiki/vimwiki',
          'justinmk/vim-dirvish',
          'voldikss/vim-floaterm',
+         'tpope/vim-fugitive',
+
+         { 'nvim-telescope/telescope.nvim',
+           branch = '0.1.x', 
+           requires = { 'nvim-lua/plenary.nvim' }},
+         { 'nvim-telescope/telescope-fzf-native.nvim',
+           run = 'make', 
+           cond = vim.fn.executable 'make' == 1 },
 
 
 	 'neovim/nvim-lspconfig',
@@ -37,12 +51,13 @@ plugins.use({
          'hrsh7th/cmp-nvim-lua',
          'hrsh7th/cmp-nvim-lsp',
          'hrsh7th/cmp-cmdline',
-         'saadparwaiz1/cmp-luasnip',
+         'saadparwaiz1/cmp_luasnip',
 
          -- snippets
          'L3MON4D3/LuaSnip', -- snippet engine
          'rafamadriz/friendly-snippets',
 
+	 'lewis6991/gitsigns.nvim',
          'mhinz/vim-startify',
          'tpope/vim-eunuch',
          {
