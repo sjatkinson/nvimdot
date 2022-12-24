@@ -60,10 +60,7 @@ require('plugins').use({
 	 'lewis6991/gitsigns.nvim',
          'mhinz/vim-startify',
          'tpope/vim-eunuch',
-         {
-            'nvim-telescope/telescope.nvim',
-            requires = {{'nvim-lua/plenary.nvim'}}
-        },
+
         -- Color themes
          'morhetz/gruvbox',
          'mhartington/oceanic-next',
@@ -75,7 +72,6 @@ require('plugins').use({
 local keymaps = require('keymaps')
 keymaps.normal( {
 	{ "<C-n>", ":Startify<CR>" },
-        { "<C-f>", ":Files<CR>" },
 })
 
 
