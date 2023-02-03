@@ -1,9 +1,11 @@
 local cmp = require 'cmp'
 
+local luasnip = require 'luasnip'
+
 cmp.setup {
     snippet = {
         expand = function(args)
-            luansip.lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = {
@@ -22,10 +24,5 @@ cmp.setup {
         { name = "path" },
         { name = "luasnip" },
         { name = "buffer", keyword_length = 5 },
-    },
-    snippet = {
-        expan = function(args)
-            require("luasnip").lsp_expand(args.body)
-        end,
     },
 }
