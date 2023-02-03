@@ -6,6 +6,7 @@ require('plugins').use(
         'junegunn/fzf.vim',
         'vimwiki/vimwiki',
         'mbbill/undotree',
+        'nvim-lualine/lualine.nvim',
         'justinmk/vim-dirvish',
         'voldikss/vim-floaterm',
         'tpope/vim-fugitive',
@@ -85,11 +86,17 @@ opts.set_options( {
     termguicolors = true,
     hlsearch = false,
     incsearch = true,
+    updatetime = 250,
     completeopt=menu,menuone,noselect,
 })
 
 opts.set_globals({ mapleader = " " })
 opts.set_vim_options({ "colorscheme onedark"})
+vim.keymap.set('n', '<F1>', '<Nop>')
+vim.keymap.set('i', '<F1>', '<ESC>')
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 vim.opt.listchars = {
 }
