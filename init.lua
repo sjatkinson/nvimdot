@@ -1,5 +1,8 @@
 -- exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 require('plugins').use(
     {
         'junegunn/fzf',
@@ -11,31 +14,31 @@ require('plugins').use(
         'voldikss/vim-floaterm',
         'tpope/vim-fugitive',
 
-        { 
+        {
             'nvim-telescope/telescope.nvim',
-            branch = '0.1.x', 
-            requires = { 'nvim-lua/plenary.nvim' }},
-        { 
+            branch = '0.1.x',
+            dependencies = { 'nvim-lua/plenary.nvim' }},
+        {
             'nvim-telescope/telescope-fzf-native.nvim',
-            run = 'make', 
+            build = 'make',
             cond = vim.fn.executable 'make' == 1 },
 
         -- treesitter
         {
             'nvim-treesitter/nvim-treesitter',
-            run = function()
+            build = function()
                 pcall(require('nvim-treesitter.install').update { with_sync = true })
             end,
         },
 
         {
             'nvim-treesitter/nvim-treesitter-textobjects',
-            after = 'nvim-treesitter',
+            dependencies = {'nvim-treesitter'},
         },
 
         {
             'neovim/nvim-lspconfig',
-            requires = {
+            dependencies = {
                 'williamboman/mason.nvim',
                 'williamboman/mason-lspconfig.nvim',
                 'j-hui/fidget.nvim',
@@ -44,7 +47,7 @@ require('plugins').use(
         -- completion
         {
             'hrsh7th/nvim-cmp',
-            requires = {
+            dependencies = {
                 'hrsh7th/cmp-nvim-lsp',
                 'saadparwaiz1/cmp_luasnip',
                 'L3MON4D3/LuaSnip', -- snippet engine
@@ -90,7 +93,6 @@ opts.set_options( {
     completeopt=menu,menuone,noselect,
 })
 
-opts.set_globals({ mapleader = " " })
 opts.set_vim_options({ "colorscheme onedark"})
 vim.keymap.set('n', '<F1>', '<Nop>')
 vim.keymap.set('i', '<F1>', '<ESC>')

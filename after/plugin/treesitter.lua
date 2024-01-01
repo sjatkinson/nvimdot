@@ -1,7 +1,10 @@
 require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'ruby', 'help', 'vim' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'ruby', 'vim' },
 
-    highlight = { enable = true },
+    highlight = {
+        enable = true,
+        disable = { "txt" },
+    },
     indent = { enable = true, disable = { 'python' }},
     incremental_selection = {
         enable = true,
