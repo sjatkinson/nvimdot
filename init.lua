@@ -64,6 +64,7 @@ require('plugins').use(
         'mhartington/oceanic-next',
         'sickill/vim-monokai',
         'joshdick/onedark.vim',
+        { "folke/neodev.nvim", opts = {} }
     })
 
 
