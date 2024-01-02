@@ -1,7 +1,9 @@
 -- exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+require('options').set_globals({
+    mapleader = ' ',
+    maplocalleader = ' '
+})
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
 
 require('plugins').use(
     {
