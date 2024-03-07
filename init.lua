@@ -1,9 +1,6 @@
 -- exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
-require('options').set_globals({
-    mapleader = ' ',
-    maplocalleader = ' '
-})
-
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 require('plugins').use(
     {
@@ -77,32 +74,45 @@ keymaps.normal( {
 
 
 local opts = require('options')
-opts.set_options( { 
+opts.set_options( {
     autoindent = true,
+    backup = false,
+    clipboard = 'unnamedplus',
+    completeopt=menu,menuone,noselect,
     expandtab = true,
     hidden = true,
+    hlsearch = false,
+    incsearch = true,
     ignorecase = true,
+    mouse = 'a',
     number = true ,
     pyxversion = 3,
     shiftwidth = 4,
-    softtabstop = 4,
     smartindent = true,
+    softtabstop = 4,
     swapfile = false,
-    backup = false,
     termguicolors = true,
-    hlsearch = false,
-    incsearch = true,
     updatetime = 250,
-    completeopt=menu,menuone,noselect,
 })
 
+
 opts.set_vim_options({ "colorscheme onedark"})
-vim.keymap.set('n', '<F1>', '<Nop>')
+-- vim.keymap.set('n', '<F1>', '<Nop>')
 vim.keymap.set('i', '<F1>', '<ESC>')
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
+require('keymaps').normal({
+    {'<F1>', '<Nop>'},
+})
 vim.opt.listchars = {
 }
 
+vim.api.nvim_create_autocmd('TextYankPost', {
+    desc = 'Hight when yanking (copying) text',
+    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+})
