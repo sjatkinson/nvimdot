@@ -105,7 +105,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 require('keymaps').normal({
     {'<F1>', '<Nop>'},
+    {'<C-h>', '<C-w><C-h>', {desc = 'Move focus to the left window'}},
+    {'<C-l>', '<C-w><C-l>', {desc = 'Move focus to the right window'}},
+    {'<C-j>', '<C-w><C-j>', {desc = 'Move focus to the lower window'}},
+    {'<C-k>', '<C-w><C-k>', {desc = 'Move focus to the upperr window'}},
 })
+
 vim.opt.listchars = {
 }
 
