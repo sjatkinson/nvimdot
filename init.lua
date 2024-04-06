@@ -12,6 +12,14 @@ require('plugins').use(
         'justinmk/vim-dirvish',
         'voldikss/vim-floaterm',
         'tpope/vim-fugitive',
+        {
+            'folke/which-key.nvim',
+            event = 'VimEnter',
+            init = function()
+                vim.o.timeout = true
+                vim.o.timeoutlen = 500
+            end,
+        },
 
         {
             'nvim-telescope/telescope.nvim',
