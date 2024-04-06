@@ -42,7 +42,10 @@ require('plugins').use(
             'nvim-treesitter/nvim-treesitter-textobjects',
             dependencies = {'nvim-treesitter'},
         },
-
+        {
+            "nvim-telescope/telescope-file-browser.nvim",
+            dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+        },
         {
             'neovim/nvim-lspconfig',
             dependencies = {

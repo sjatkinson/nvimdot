@@ -12,6 +12,7 @@ require('telescope').setup {
 
 pcall(require('telescope').load_extension, 'fzf')
 local builtin = require('telescope.builtin')
+require("telescope").load_extension "file_browser"
 
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Recently opened files'})
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '{[ ] Existing buffers'})
@@ -29,3 +30,6 @@ vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch curren
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers'})
+
+vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<cr>')
+vim.keymap.set("n", "<space>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
