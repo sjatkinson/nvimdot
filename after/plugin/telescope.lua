@@ -29,7 +29,7 @@ vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' 
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
-vim.keymap.set('n', '<leader>sb', builtin.buffers, { desc = '[S]earch [B]uffers'})
+vim.keymap.set('n', '<leader>sr', builtin.git_files, { desc = '[S]earch Git [R]epo'})
 
 vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<cr>')
 vim.keymap.set("n", "<space>ff", ":Telescope file_browser path=%:p:h select_buffer=true<CR>")
