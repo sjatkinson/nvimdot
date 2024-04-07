@@ -4,96 +4,41 @@ vim.g.maplocalleader = ' '
 
 require('plugins').use(
     {
+        -- simple plugins with default config
         'junegunn/fzf',
         'junegunn/fzf.vim',
         'vimwiki/vimwiki',
         'mbbill/undotree',
         'nvim-lualine/lualine.nvim',
-        require 'plugins.vim-dirvish',
+        'justinmk/vim-dirvish',
         'voldikss/vim-floaterm',
         'tpope/vim-fugitive',
-        {
-            'folke/which-key.nvim',
-            event = 'VimEnter',
-            init = function()
-                vim.o.timeout = true
-                vim.o.timeoutlen = 500
-            end,
-        },
-        {
-            'numToStr/Comment.nvim', opts = {}
-        },
-        {
-            'nvim-telescope/telescope.nvim',
-            branch = '0.1.x',
-            dependencies = {
-                'nvim-lua/plenary.nvim',
-                { 'nvim-telescope/telescope-ui-select.nvim' },
-
-                -- Useful for getting pretty icons, but requires a Nerd Font.
-                { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
-
-            }
-        },
-        {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            build = 'make',
-            cond = vim.fn.executable 'make' == 1
-        },
-        {
-            "nvim-telescope/telescope-file-browser.nvim",
-            dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
-        },
-
-        -- treesitter
-        {
-            'nvim-treesitter/nvim-treesitter',
-            build = function()
-                pcall(require('nvim-treesitter.install').update { with_sync = true })
-            end,
-        },
-
-        {
-            'nvim-treesitter/nvim-treesitter-textobjects',
-            dependencies = {'nvim-treesitter'},
-        },
-        {
-            'neovim/nvim-lspconfig',
-            dependencies = {
-                'williamboman/mason.nvim',
-                'williamboman/mason-lspconfig.nvim',
-                'j-hui/fidget.nvim',
-                { 'folke/neodev.nvim', opts = {} },
-            },
-        },
-        -- completion
-        {
-            'hrsh7th/nvim-cmp',
-            dependencies = {
-                'hrsh7th/cmp-nvim-lsp',
-                'hrsh7th/cmp-buffer',
-                'saadparwaiz1/cmp_luasnip',
-                'L3MON4D3/LuaSnip', -- snippet engine
-                'rafamadriz/friendly-snippets',
-            },
-        },
-
+        'tpope/vim-eunuch',
         'lewis6991/gitsigns.nvim',
         'mhinz/vim-startify',
-        'tpope/vim-eunuch',
-
         -- Color themes
         'morhetz/gruvbox',
         'mhartington/oceanic-next',
         'sickill/vim-monokai',
         'joshdick/onedark.vim',
-        { "folke/neodev.nvim", opts = {} }
+
+        -- plugins with configurtion are in their own files
+        require 'plugins.which-key',
+        require 'plugins.nvim-comment',
+        require 'plugins.telescope',
+        require 'plugins.treesitter',
+        require 'plugins.lsp',
+        require 'plugins.nvim-cmp',
     })
 
-
-local keymaps = require('keymaps')
-keymaps.normal( {
+require('keymaps').normal({
     { "<C-n>", ":Startify<CR>" },
+    {'<F1>', '<Nop>'},
+    {'<C-h>', '<C-w><C-h>', {desc = 'Move focus to the left window'}},
+    {'<C-l>', '<C-w><C-l>', {desc = 'Move focus to the right window'}},
+    {'<C-j>', '<C-w><C-j>', {desc = 'Move focus to the lower window'}},
+    {'<C-k>', '<C-w><C-k>', {desc = 'Move focus to the upperr window'}},
+    { '<Esc>', '<cmd>nohlsearch<CR>', {desc = 'Clear search highlight'}},
 })
 
 
@@ -134,14 +79,6 @@ vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
-require('keymaps').normal({
-    {'<F1>', '<Nop>'},
-    {'<C-h>', '<C-w><C-h>', {desc = 'Move focus to the left window'}},
-    {'<C-l>', '<C-w><C-l>', {desc = 'Move focus to the right window'}},
-    {'<C-j>', '<C-w><C-j>', {desc = 'Move focus to the lower window'}},
-    {'<C-k>', '<C-w><C-k>', {desc = 'Move focus to the upperr window'}},
-    { '<Esc>', '<cmd>nohlsearch<CR>', {desc = 'Clear search highlight'}},
-})
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Hight when yanking (copying) text',
