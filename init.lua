@@ -52,6 +52,7 @@ require('plugins').use(
                 'williamboman/mason.nvim',
                 'williamboman/mason-lspconfig.nvim',
                 'j-hui/fidget.nvim',
+                { 'folke/neodev.nvim', opts = {} },
             },
         },
         -- completion
@@ -88,22 +89,29 @@ local opts = require('options')
 opts.set_options( {
     autoindent = true,
     backup = false,
+    breakindent = true,
     clipboard = 'unnamedplus',
     completeopt=menu,menuone,noselect,
     expandtab = true,
     hidden = true,
-    hlsearch = false,
+    hlsearch = true,
     incsearch = true,
     ignorecase = true,
     mouse = 'a',
     number = true ,
     pyxversion = 3,
     shiftwidth = 4,
+    smartcase = true,
     smartindent = true,
     softtabstop = 4,
     swapfile = false,
     termguicolors = true,
+    undofile = true,
     updatetime = 250,
+    list = true,
+    listchars = { tab = '» ', trail = '·', nbsp = '␣' },
+    inccommand = 'split',
+    cursorline = true,
 })
 
 
@@ -120,10 +128,8 @@ require('keymaps').normal({
     {'<C-l>', '<C-w><C-l>', {desc = 'Move focus to the right window'}},
     {'<C-j>', '<C-w><C-j>', {desc = 'Move focus to the lower window'}},
     {'<C-k>', '<C-w><C-k>', {desc = 'Move focus to the upperr window'}},
+    { '<Esc>', '<cmd>nohlsearch<CR>', {desc = 'Clear search highlight'}},
 })
-
-vim.opt.listchars = {
-}
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     desc = 'Hight when yanking (copying) text',
