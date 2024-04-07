@@ -20,7 +20,9 @@ require('plugins').use(
                 vim.o.timeoutlen = 500
             end,
         },
-
+        { 
+            'numToStr/Comment.nvim', opts = {}
+        },
         {
             'nvim-telescope/telescope.nvim',
             branch = '0.1.x',
