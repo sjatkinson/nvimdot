@@ -9,7 +9,7 @@ require('plugins').use(
         'vimwiki/vimwiki',
         'mbbill/undotree',
         'nvim-lualine/lualine.nvim',
-        'justinmk/vim-dirvish',
+        require 'plugins.vim-dirvish',
         'voldikss/vim-floaterm',
         'tpope/vim-fugitive',
         {
