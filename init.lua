@@ -75,6 +75,7 @@ require('plugins').use( {
     require 'plugins.treesitter',
     require 'plugins.lsp',
     require 'plugins.nvim-cmp',
+    require 'plugins.conform',
 })
 
 -- TODO: where to put this?
