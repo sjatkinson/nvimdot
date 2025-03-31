@@ -13,22 +13,12 @@ local root_files = {
     "compile_commands.json",
 }
 
-local set_mappings = function(_, bufnr)
-    VIM_KEYMAP_SET(
-        { "n" },
-        "<leader>gs",
-        "<Cmd>ClangdSwitchSourceHeader<Cr>",
-        { buffer = bufnr }
-    )
-end
 
 local opts = {
     on_attach = function(client, bufnr)
-        lsp_handlers.set_mappings(client, bufnr)
         lsp_handlers.set_autocmds(client, bufnr)
         lsp_handlers.set_additional_plugins(client, bufnr)
         diagnostics.set_mappings(client, bufnr)
-        set_mappings(client, bufnr)
     end,
     capabilities = lsp_handlers.capabilities,
     root_dir = function(fname)
