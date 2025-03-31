@@ -2,19 +2,19 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
- require('options').set_options( {
+require('options').set_options({
     autoindent = true,
     backup = false,
     breakindent = true,
     clipboard = 'unnamedplus',
-    completeopt='menu,menuone,noselect',
+    completeopt = 'menu,menuone,noselect',
     expandtab = true,
     hidden = true,
     hlsearch = true,
     incsearch = true,
     ignorecase = true,
     mouse = 'a',
-    number = true ,
+    number = true,
     pyxversion = 3,
     shiftwidth = 4,
     smartcase = true,
@@ -33,12 +33,12 @@ vim.g.maplocalleader = ' '
 
 require('keymaps').normal({
     { "<C-n>", ":Startify<CR>" },
-    {'<F1>', '<Nop>'},
-    {'<C-h>', '<C-w><C-h>', {desc = 'Move focus to the left window'}},
-    {'<C-l>', '<C-w><C-l>', {desc = 'Move focus to the right window'}},
-    {'<C-j>', '<C-w><C-j>', {desc = 'Move focus to the lower window'}},
-    {'<C-k>', '<C-w><C-k>', {desc = 'Move focus to the upperr window'}},
-    { '<Esc>', '<cmd>nohlsearch<CR>', {desc = 'Clear search highlight'}},
+    { '<F1>', '<Nop>' },
+    { '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' } },
+    { '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' } },
+    { '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' } },
+    { '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upperr window' } },
+    { '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' } },
 })
 
 -- TODO: how to add these above
@@ -49,14 +49,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 vim.keymap.set('i', '<F1>', '<ESC>')
 
 
-require('plugins').use( {
+require('plugins').use({
     -- simple plugins with default config
     'junegunn/fzf',
     'junegunn/fzf.vim',
-    'vimwiki/vimwiki',
     'mbbill/undotree',
     'nvim-lualine/lualine.nvim',
-    'justinmk/vim-dirvish',
     'voldikss/vim-floaterm',
     'tpope/vim-fugitive',
     'tpope/vim-eunuch',
@@ -76,6 +74,7 @@ require('plugins').use( {
     require 'plugins.lsp',
     require 'plugins.nvim-cmp',
     require 'plugins.conform',
+    require 'plugins.oil',
 })
 
 -- TODO: where to put this?
@@ -86,4 +85,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end,
 })
-
+require('keymaps').normal({
+    { "-", ":Oil<CR>" },
+})
+vim.lsp.set_log_level("off")
