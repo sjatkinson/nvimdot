@@ -6,4 +6,4 @@ require('which-key').add({
     { "<leader>r", group = "[R]ename" },
     { "<leader>s", group = "[S]earch" },
     { "<leader>w", group = "[w]orkspace" },
-  })
+})

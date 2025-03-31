@@ -3,7 +3,7 @@ local on_attach = function(_, bufnr)
         if desc then
             desc = 'LSP: ' .. desc
         end
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc})
+        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
     nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -26,21 +26,13 @@ end
 
 require('mason').setup()
 
-local servers = { 'clangd', 'lua_ls' }
+local servers = { 'clangd', 'lua_ls', 'zls' }
 
 require('mason-lspconfig').setup {
     ensure_installed = servers
 }
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
-for _,lsp in ipairs(servers) do
-    require('lspconfig')[lsp].setup {
-        on_attach = on_attach,
-        capabilities = capabilities,
-    }
-end
 
 require('fidget').setup()
 
