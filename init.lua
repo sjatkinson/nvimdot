@@ -48,6 +48,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 vim.keymap.set('i', '<F1>', '<ESC>')
+vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'LSP omni-completion' })
 
 
 require('plugins').use({
