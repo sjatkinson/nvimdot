@@ -33,6 +33,7 @@ vim.opt.signcolumn = 'yes'
 -- Core keymaps
 vim.keymap.set('n', '<F1>', '<Nop>')
 vim.keymap.set('i', '<F1>', '<ESC>')
+vim.keymap.set('i', '<C-Space>', '<C-x><C-o>', { desc = 'LSP omni-completion' })
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
 -- Window navigation
@@ -98,4 +99,4 @@ require("lazy").setup("plugins", {
 })
 
 -- LSP logging
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level("off")
