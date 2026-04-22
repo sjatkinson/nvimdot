@@ -39,12 +39,15 @@ require('mason-lspconfig').setup {
 
 require('fidget').setup()
 
+vim.lsp.config('*', {
+    on_attach = on_attach,
+})
+
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/*.lua')
 table.insert(runtime_path, 'lua/**/init.lua')
 
 vim.lsp.config('lua_ls', {
-    on_attach = on_attach,
     settings = {
         Lua = {
             runtime = {
@@ -65,4 +68,4 @@ vim.lsp.config('lua_ls', {
 
 require('lsp.clangd').setup()
 
-vim.lsp.enable({ 'lua_ls', 'zls' })
+vim.lsp.enable({ 'lua_ls', 'zls', 'gopls', 'basedpyright', 'ruff', 'bashls' })
