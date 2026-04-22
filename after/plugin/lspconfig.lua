@@ -26,7 +26,10 @@ end
 
 require('mason').setup()
 
-local servers = { 'clangd', 'lua_ls', 'zls' }
+-- ruby_lsp deferred: needs Ruby >= 2.7; macOS ships 2.6. Rare work-use
+-- doesn't justify installing brew ruby or a version manager. Re-enable
+-- when actually needed.
+local servers = { 'clangd', 'lua_ls', 'zls', 'gopls', 'basedpyright', 'ruff', 'bashls' }
 
 require('mason-lspconfig').setup {
     ensure_installed = servers
@@ -36,15 +39,17 @@ require('mason-lspconfig').setup {
 
 require('fidget').setup()
 
+vim.lsp.config('*', {
+    on_attach = on_attach,
+})
+
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/*.lua')
 table.insert(runtime_path, 'lua/**/init.lua')
 
-require('lspconfig').lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
+vim.lsp.config('lua_ls', {
     settings = {
-        lua = {
+        Lua = {
             runtime = {
                 version = 'LuaJIT',
                 path = runtime_path,
@@ -59,6 +64,8 @@ require('lspconfig').lua_ls.setup {
             telemetry = { enable = false },
         },
     },
-}
+})
 
 require('lsp.clangd').setup()
+
+vim.lsp.enable({ 'lua_ls', 'zls', 'gopls', 'basedpyright', 'ruff', 'bashls' })
