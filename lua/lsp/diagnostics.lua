@@ -44,8 +44,6 @@ M.setup = function()
 end
 
 M.set_mappings = function(_, bufnr)
-    vim.keymap.set({ "n" }, "]d", vim.diagnostic.goto_next, { buffer = bufnr })
-    vim.keymap.set({ "n" }, "[d", vim.diagnostic.goto_prev, { buffer = bufnr })
     if OK_TELESCOPE then
         vim.keymap.set(
             { "n" },

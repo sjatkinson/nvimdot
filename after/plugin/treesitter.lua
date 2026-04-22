@@ -1,62 +1,25 @@
-require('nvim-treesitter.configs').setup {
-    ensure_installed = { 'c', 'cpp', 'go',
-        'lua', 'python', 'rust', 'ruby', 'vim', 'vimdoc' },
+-- nvim-treesitter v1.0 (main branch) API.
+-- markdown/markdown_inline intentionally omitted: Nvim 0.12 bundles both,
+-- and co-installing via the plugin re-creates the rtp collision that led
+-- to the overrides under ~/.config/nvim/queries/markdown*/.
+-- textobjects keymaps from the old master config are in git history
+-- (see pre-migration after/plugin/treesitter.lua); re-add via
+-- nvim-treesitter-textobjects main branch setup in a follow-up.
 
-    highlight = {
-        enable = true,
-        disable = { "txt" },
-    },
-    indent = { enable = true, disable = { 'python' }},
-    incremental_selection = {
-        enable = true,
-        keymaps = {
-            init_selection = '<c-space>',
-            node_incremental = '<c-space>',
-            scope_incremental = '<c-s>',
-            node_decremental = '<c-backspace>',
-        },
-    },
-    textobjects = {
-        select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-                ['aa'] = '@parameter.outer',
-                ['ia'] = '@parameter.inner',
-                ['af'] = '@function.outer',
-                ['if'] = '@function.inner',
-                ['ac'] = '@class.outer',
-                ['ic'] = '@class.inner',
-            },
-        },
-        move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-                [']m'] = '@function.outer',
-                [']]'] = '@class.outer',
-            },
-            goto_next_end = {
-                [']M'] = '@function.outer',
-                [']['] = '@class.outer',
-            },
-            goto_previous_start = {
-                ['[m'] = '@function.outer',
-                ['[['] = '@class.outer',
-            },
-            goto_previous_end = {
-                ['[M'] = '@function.outer',
-                ['[]'] = '@class.outer',
-            },
-        },
-        swap = {
-            enable = true,
-            swap_next = {
-                ['<leader>a'] = '@parameter.inner',
-            },
-            swap_previous = {
-                ['<leader>A'] = '@parameter.inner',
-            },
-        },
-    },
-}
+require('nvim-treesitter').setup({
+    install_dir = vim.fn.stdpath('data') .. '/site',
+})
+
+require('nvim-treesitter').install({
+    'c', 'cpp', 'go', 'lua', 'python', 'ruby', 'rust', 'zig',
+    'bash', 'vim', 'vimdoc', 'diff', 'gitcommit',
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(args)
+        local lang = vim.treesitter.language.get_lang(vim.bo[args.buf].filetype)
+        if lang and pcall(vim.treesitter.start, args.buf, lang) then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
+    end,
+})

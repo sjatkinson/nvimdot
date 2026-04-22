@@ -40,11 +40,10 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/*.lua')
 table.insert(runtime_path, 'lua/**/init.lua')
 
-require('lspconfig').lua_ls.setup {
+vim.lsp.config('lua_ls', {
     on_attach = on_attach,
-    capabilities = capabilities,
     settings = {
-        lua = {
+        Lua = {
             runtime = {
                 version = 'LuaJIT',
                 path = runtime_path,
@@ -59,6 +58,8 @@ require('lspconfig').lua_ls.setup {
             telemetry = { enable = false },
         },
     },
-}
+})
 
 require('lsp.clangd').setup()
+
+vim.lsp.enable({ 'lua_ls', 'zls' })

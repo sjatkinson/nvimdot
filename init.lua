@@ -43,6 +43,7 @@ require('keymaps').normal({
 
 -- TODO: how to add these above
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
@@ -74,6 +75,7 @@ require('plugins').use({
     require 'plugins.lsp',
     require 'plugins.conform',
     require 'plugins.oil',
+    require 'plugins.mason-tool-installer',
 })
 
 -- TODO: where to put this?
@@ -87,4 +89,4 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('keymaps').normal({
     { "-", ":Oil<CR>" },
 })
-vim.lsp.set_log_level("off")
+vim.lsp.log.set_level("off")
