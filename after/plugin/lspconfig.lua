@@ -26,7 +26,10 @@ end
 
 require('mason').setup()
 
-local servers = { 'clangd', 'lua_ls', 'zls' }
+-- ruby_lsp deferred: needs Ruby >= 2.7; macOS ships 2.6. Rare work-use
+-- doesn't justify installing brew ruby or a version manager. Re-enable
+-- when actually needed.
+local servers = { 'clangd', 'lua_ls', 'zls', 'gopls', 'basedpyright', 'ruff', 'bashls' }
 
 require('mason-lspconfig').setup {
     ensure_installed = servers
